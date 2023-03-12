@@ -137,6 +137,11 @@ void writeStudentToFile(const Student& s, std::ofstream& file)
 void writeGroupToFile(const groupOfStudents& grp, const char* nameFile)
 {
 	std::ofstream file(nameFile);
+	if(!file.is_open())
+	{
+		std::cout<<"ERROR IN OPENING FILE";
+		return;
+	}
 	file << "First name,Last name,Email address,FN";
 	for (size_t i = 0; i < grp.numberOfStudents; i++)
 	{
@@ -164,7 +169,7 @@ void returnToNextSpace(const char* buff, size_t& index,char*& word)
 
 bool comandExecution(const char* buff,groupOfStudents& a)
 {
-	if (strlen(buff) < 7)
+	if (strlen(buff) < 6)
 	{
 		std::cout << "WRONG COMMAND TRY AGAIN!" << std::endl; return true;
 	}
